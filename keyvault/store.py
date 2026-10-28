@@ -1,0 +1,23 @@
+
+class KeyValueStore:
+    def __init__(self):
+        self._data: dict[str, str] = {}
+
+    def set(self, key: str, value: str) -> None:
+        self._data[key] = value
+
+    def get(self, key: str) -> str | None:
+        return self._data.get(key)
+
+    def delete(self, key: str) -> bool:
+        if key not in self._data:
+            return False
+
+        del self._data[key]
+        return True
+
+    def exists(self, key: str) -> bool:
+        return key in self._data
+
+    def count(self) -> int:
+        return len(self._data)
